@@ -34,12 +34,7 @@ public class ProductoRepositoryAdapter implements ProductoRepository {
                 .map(Mono::just)
                 .orElse(Mono.empty());
     }
-    
-    @Override
-    public Flux<Producto> findBySucursalId(Long sucursalId) {
-        return Flux.fromIterable(productoJpaRepository.findBySucursalId(sucursalId))
-                .map(productoEntityMapper::toDomain);
-    }
+
     
     @Override
     public Mono<Producto> findByNombreAndSucursalId(String nombre, Long sucursalId) {

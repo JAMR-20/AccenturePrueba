@@ -35,11 +35,9 @@ public class ProductoUseCaseImpl implements ProductoUseCase {
     
     @Override
     public Mono<ProductoDto> crearProducto(ProductoDto productoDto) {
-        // Verificar que la sucursal existe
         return sucursalRepository.findById(productoDto.getSucursalId())
                 .switchIfEmpty(Mono.error(new SucursalNotFoundException(productoDto.getSucursalId())))
                 .then(Mono.defer(() -> {
-                    // Verificar que no existe un producto con el mismo nombre en esta sucursal
                     return productoRepository.findByNombreAndSucursalId(productoDto.getNombre(), productoDto.getSucursalId())
                             .flatMap(productoExistente -> 
                                 Mono.<ProductoDto>error(new ProductoDuplicadoException(productoDto.getNombre(), productoDto.getSucursalId()))
@@ -89,7 +87,7 @@ public class ProductoUseCaseImpl implements ProductoUseCase {
     
     @Override
     public Flux<ProductoConSucursalDto> obtenerProductosConMayorStockPorFranquicia(Long franquiciaId) {
-        // Verificar que la franquicia existe
+
         return franquiciaRepository.findById(franquiciaId)
                 .switchIfEmpty(Mono.error(new FranquiciaNotFoundException(franquiciaId)))
                 .thenMany(productoRepository.findProductosConMayorStockPorSucursal(franquiciaId))

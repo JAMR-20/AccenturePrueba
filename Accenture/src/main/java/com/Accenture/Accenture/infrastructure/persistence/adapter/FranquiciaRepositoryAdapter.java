@@ -7,7 +7,6 @@ import com.Accenture.Accenture.infrastructure.persistence.mapper.FranquiciaEntit
 import com.Accenture.Accenture.infrastructure.persistence.repository.FranquiciaJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -34,19 +33,7 @@ public class FranquiciaRepositoryAdapter implements FranquiciaRepository {
                 .map(Mono::just)
                 .orElse(Mono.empty());
     }
-    
-    @Override
-    public Flux<Franquicia> findAll() {
-        return Flux.fromIterable(franquiciaJpaRepository.findAll())
-                .map(franquiciaEntityMapper::toDomain);
-    }
-    
-    @Override
-    public Mono<Void> deleteById(Long id) {
-        franquiciaJpaRepository.deleteById(id);
-        return Mono.empty();
-    }
-    
+
     @Override
     public Mono<Franquicia> findByNombre(String nombre) {
         return franquiciaJpaRepository.findByNombre(nombre)

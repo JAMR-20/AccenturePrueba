@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 /**
- * DTO para respuesta de modificación de stock con información completa
+ * DTO para respuesta de modificación de stock
  */
 @Data
 @Builder

@@ -29,7 +29,6 @@ public class ProductoEntityMapper {
             return null;
         }
         
-        // Crear una SucursalEntity con solo el ID para la relación
         SucursalEntity sucursal = null;
         if (producto.getSucursalId() != null) {
             sucursal = SucursalEntity.builder()

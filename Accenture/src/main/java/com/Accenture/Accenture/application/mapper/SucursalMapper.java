@@ -19,7 +19,7 @@ public class SucursalMapper {
                 .id(sucursal.getId())
                 .nombre(sucursal.getNombre())
                 .franquiciaId(sucursal.getFranquiciaId())
-                .productos(null) // Se maneja por separado para evitar recursión
+                .productos(null)
                 .build();
     }
     
@@ -32,7 +32,7 @@ public class SucursalMapper {
                 .id(sucursalDto.getId())
                 .nombre(sucursalDto.getNombre())
                 .franquiciaId(sucursalDto.getFranquiciaId())
-                .productos(null) // Se maneja por separado para evitar recursión
+                .productos(null)
                 .build();
     }
 }

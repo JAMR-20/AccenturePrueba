@@ -54,13 +54,15 @@ El proyecto sigue los principios de Clean Architecture con las siguientes capas:
 
 ## Instalación y Ejecución
 
-### Prerrequisitos
 
+###Opción 1: Desarrollo Local
+
+**Prerrequisitos:**
 - Java 17+
 - Maven 3.6+
 - MySQL 8.0+ (XAMPP, MySQL Workbench, o Docker)
 
-### Pasos para ejecutar
+**Pasos para ejecutar:**
 
 1. **Clonar el repositorio**
    ```bash
@@ -340,3 +342,51 @@ Para ejecutar las pruebas:
 mvn test
 ```
 
+##  Docker
+
+###Opción 2: Con Docker (Recomendado)
+
+**Prerrequisitos:**
+- Docker Desktop
+- Docker Compose
+
+**Ejecución rápida:**
+```bash
+# En Windows
+build-and-run.bat
+
+# En Linux/Mac
+chmod +x build-and-run.sh
+./build-and-run.sh
+```
+
+**O manualmente:**
+```bash
+# 1. Construir la aplicación
+mvnw clean package -DskipTests
+
+# 2. Ejecutar con Docker Compose
+docker-compose up --build
+```
+
+### Comandos Docker Útiles
+
+```bash
+# Construir y ejecutar
+docker-compose up --build
+
+# Ejecutar en segundo plano
+docker-compose up -d
+
+# Ver logs
+docker-compose logs -f
+
+# Detener servicios
+docker-compose down
+
+# Detener y eliminar volúmenes
+docker-compose down -v
+
+# Verificar estado
+docker-compose ps
+```

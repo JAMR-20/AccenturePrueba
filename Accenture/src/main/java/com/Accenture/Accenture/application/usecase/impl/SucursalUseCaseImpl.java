@@ -27,7 +27,6 @@ public class SucursalUseCaseImpl implements SucursalUseCase {
     
     @Override
     public Mono<SucursalDto> crearSucursal(SucursalDto sucursalDto) {
-        // Verificar que la franquicia existe
         return franquiciaRepository.findById(sucursalDto.getFranquiciaId())
                 .switchIfEmpty(Mono.error(new FranquiciaNotFoundException(sucursalDto.getFranquiciaId())))
                 .then(Mono.defer(() -> {

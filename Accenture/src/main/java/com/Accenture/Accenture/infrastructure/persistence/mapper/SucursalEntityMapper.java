@@ -20,7 +20,7 @@ public class SucursalEntityMapper {
                 .id(entity.getId())
                 .nombre(entity.getNombre())
                 .franquiciaId(entity.getFranquicia() != null ? entity.getFranquicia().getId() : null)
-                .productos(null) // Se maneja por separado para evitar recursión
+                .productos(null)
                 .build();
     }
     
@@ -29,7 +29,6 @@ public class SucursalEntityMapper {
             return null;
         }
         
-        // Crear una FranquiciaEntity con solo el ID para la relación
         FranquiciaEntity franquicia = null;
         if (sucursal.getFranquiciaId() != null) {
             franquicia = FranquiciaEntity.builder()
@@ -41,7 +40,7 @@ public class SucursalEntityMapper {
                 .id(sucursal.getId())
                 .nombre(sucursal.getNombre())
                 .franquicia(franquicia)
-                .productos(null) // Se maneja por separado para evitar recursión
+                .productos(null)
                 .build();
     }
 }

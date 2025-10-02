@@ -24,12 +24,11 @@ public class FranquiciaUseCaseImpl implements FranquiciaUseCase {
     
     @Override
     public Mono<FranquiciaDto> crearFranquicia(FranquiciaDto franquiciaDto) {
-        // Verificar si ya existe una franquicia con el mismo nombre
         return franquiciaRepository.findByNombre(franquiciaDto.getNombre())
                 .hasElement()
                 .flatMap(exists -> {
                     if (exists) {
-                        return Mono.error(new FranquiciaDuplicadaException(franquiciaDto.getNombre(), true));
+                        return Mono.error(new FranquiciaDuplicadaException(franquiciaDto.getNombre()));
                     }
                     Franquicia franquicia = franquiciaMapper.toEntity(franquiciaDto);
                     return franquiciaRepository.save(franquicia)
@@ -47,7 +46,7 @@ public class FranquiciaUseCaseImpl implements FranquiciaUseCase {
                             .hasElement()
                             .flatMap(exists -> {
                                 if (exists) {
-                                    return Mono.error(new FranquiciaDuplicadaException(actualizarNombreDto.getNombre(), true));
+                                    return Mono.error(new FranquiciaDuplicadaException(actualizarNombreDto.getNombre()));
                                 }
                                 franquicia.setNombre(actualizarNombreDto.getNombre());
                                 return franquiciaRepository.save(franquicia)

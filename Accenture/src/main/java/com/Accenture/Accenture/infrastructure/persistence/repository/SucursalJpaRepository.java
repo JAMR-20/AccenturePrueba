@@ -6,16 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 /**
  * Repositorio JPA para SucursalEntity
  */
 @Repository
 public interface SucursalJpaRepository extends JpaRepository<SucursalEntity, Long> {
-    
-    List<SucursalEntity> findByFranquiciaId(Long franquiciaId);
-    
+
     @Query("SELECT s FROM SucursalEntity s WHERE s.nombre = :nombre AND s.franquicia.id = :franquiciaId")
     SucursalEntity findByNombreAndFranquiciaId(@Param("nombre") String nombre, @Param("franquiciaId") Long franquiciaId);
 }

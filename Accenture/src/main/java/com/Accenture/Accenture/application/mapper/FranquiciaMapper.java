@@ -18,7 +18,7 @@ public class FranquiciaMapper {
         return FranquiciaDto.builder()
                 .id(franquicia.getId())
                 .nombre(franquicia.getNombre())
-                .sucursales(null) // Se maneja por separado para evitar recursión
+                .sucursales(null)
                 .build();
     }
     
@@ -30,7 +30,7 @@ public class FranquiciaMapper {
         return Franquicia.builder()
                 .id(franquiciaDto.getId())
                 .nombre(franquiciaDto.getNombre())
-                .sucursales(null) // Se maneja por separado para evitar recursión
+                .sucursales(null)
                 .build();
     }
 }

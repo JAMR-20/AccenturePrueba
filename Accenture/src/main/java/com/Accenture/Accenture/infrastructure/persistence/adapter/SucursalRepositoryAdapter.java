@@ -36,12 +36,6 @@ public class SucursalRepositoryAdapter implements SucursalRepository {
     }
     
     @Override
-    public Flux<Sucursal> findByFranquiciaId(Long franquiciaId) {
-        return Flux.fromIterable(sucursalJpaRepository.findByFranquiciaId(franquiciaId))
-                .map(sucursalEntityMapper::toDomain);
-    }
-    
-    @Override
     public Mono<Sucursal> findByNombreAndFranquiciaId(String nombre, Long franquiciaId) {
         SucursalEntity entity = sucursalJpaRepository.findByNombreAndFranquiciaId(nombre, franquiciaId);
         if (entity != null) {
@@ -49,11 +43,5 @@ public class SucursalRepositoryAdapter implements SucursalRepository {
         } else {
             return Mono.empty();
         }
-    }
-    
-    @Override
-    public Mono<Void> deleteById(Long id) {
-        sucursalJpaRepository.deleteById(id);
-        return Mono.empty();
     }
 }

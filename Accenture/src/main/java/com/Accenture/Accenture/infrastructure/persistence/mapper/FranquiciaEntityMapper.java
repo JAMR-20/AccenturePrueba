@@ -18,7 +18,7 @@ public class FranquiciaEntityMapper {
         return Franquicia.builder()
                 .id(entity.getId())
                 .nombre(entity.getNombre())
-                .sucursales(null) // Se maneja por separado para evitar recursión
+                .sucursales(null)
                 .build();
     }
     
@@ -30,7 +30,7 @@ public class FranquiciaEntityMapper {
         return FranquiciaEntity.builder()
                 .id(franquicia.getId())
                 .nombre(franquicia.getNombre())
-                .sucursales(null) // Se maneja por separado para evitar recursión
+                .sucursales(null)
                 .build();
     }
 }

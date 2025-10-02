@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * DTO de respuesta genérico para operaciones de actualización
+ * DTO de respuesta para operaciones de actualización
  */
 @Data
 @Builder
