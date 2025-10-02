@@ -351,16 +351,8 @@ mvn test
 - Docker Compose
 
 **Ejecución rápida:**
-```bash
-# En Windows
-build-and-run.bat
 
-# En Linux/Mac
-chmod +x build-and-run.sh
-./build-and-run.sh
-```
-
-**O manualmente:**
+**manualmente:**
 ```bash
 # 1. Construir la aplicación
 mvnw clean package -DskipTests
